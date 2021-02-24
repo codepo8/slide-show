@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Slide show</title>
   <style>
   body {
     background: #000;
@@ -12,16 +12,25 @@
     padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  .info {
+  .info, .docs {
     position: absolute;
     padding: 5px 10px;
     background: rgba(0,0,0,.8);
     color: #fff;
   }
+  .docs {
+    right: 0;
+    text-align: right;
+  }
+  .docs span {
+    display: block;
+  }
   .wrapper {
       width:100%;
       height:100vh;
       overflow: hidden;
+      background:rgba(1,1,1,.5);
+      z-index: 2;
     }
   .wrapper video {
     object-fit: contain;
@@ -32,14 +41,16 @@
 </head>
 <body>
   <div class="info"></div>
+  <div class="docs">Arrow keys go back/forward. <span>space to toggle autoplay</span></div>
   <div class="wrapper">
     <video autoplay loop></video>
   </div>
 <script>
+  const out = document.querySelector('.info');
+  const video = document.querySelector('video');
   let arr = ['ball.mp4','dinowalk.mp4','dirty.mp4','goldiejump.mp4','step.mp4','tippy.mp4','wag.mp4'];
-  let out = document.querySelector('.info');
   let counter = 0;
-  let autoincrease = true;
+  let autoincrease = false;
   let timeout = false;
   let speed = 3000;
   function validatecounter() {
@@ -54,25 +65,24 @@
       ${arr[counter]} 
       ${counter+1}/${arr.length}
     `;
-    document.querySelector('video').src = 'imgs/'+arr[counter];
-    if (autoincrease) {
-      timeout = window.setTimeout(
-        function(){
-          counter++;
-          validatecounter();
-      },speed);
-    }
+    video.src = 'imgs/' + arr[counter];
+      if (autoincrease) {
+        timeout = window.setTimeout(
+          function(){
+            counter++;
+            validatecounter();
+        },speed);
+      }
   }
   document.addEventListener('keyup', ev => {
+    ev.preventDefault();
     if (ev.key === "ArrowRight") {counter++;autoincrease = false}
     if (ev.key === "ArrowLeft") {counter--;autoincrease = false}
     if (ev.key === " ") {autoincrease = !autoincrease}
     if (ev.key === "ArrowLeft") {counter--;autoincrease = false}
-    ev.preventDefault();
     validatecounter();
   });
   validatecounter();
-
 </script>
 
 
