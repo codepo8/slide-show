@@ -49,13 +49,14 @@
   const out = document.querySelector('.info');
   const video = document.querySelector('video');
   let arr = ['ball.mp4','dinowalk.mp4','dirty.mp4','goldiejump.mp4','step.mp4','tippy.mp4','wag.mp4'];
-  let counter = 0;
+  let counter = localStorage.getItem('slidecounter')||0;
   let autoincrease = true;
   let timeout = false;
   let speed = 3000;
   function validatecounter() {
     if (counter < 0) counter = arr.length - 1;
     counter = counter % arr.length;
+    localStorage.setItem('slidecounter',counter);
     show();
   }
   function show() {
