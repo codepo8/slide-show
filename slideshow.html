@@ -5,86 +5,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slide show</title>
-  <style>
-  body {
-    background: #000;
-    margin: 0;
-    padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  .info, .docs {
-    position: absolute;
-    padding: 5px 10px;
-    background: rgba(0,0,0,.8);
-    color: #fff;
-  }
-  .docs {
-    right: 0;
-    text-align: right;
-  }
-  .docs span {
-    display: block;
-  }
-  .wrapper {
-      width:100%;
-      height:100vh;
-      overflow: hidden;
-      background:rgba(1,1,1,.5);
-      z-index: 2;
-    }
-  .wrapper video {
-    object-fit: contain;
-    width:100%;
-    height:100%;
-  }
-  </style>
+  <link rel="stylesheet" href="base.css">
 </head>
 <body>
-  <div class="info"></div>
-  <div class="docs">Arrow keys go back/forward. <span>space to toggle autoplay</span></div>
-  <div class="wrapper">
-    <video autoplay loop></video>
-  </div>
+<div id="slideshow-container"></div>
 <script>
-  const out = document.querySelector('.info');
-  const video = document.querySelector('video');
-  let arr = ['ball.mp4','dinowalk.mp4','dirty.mp4','goldiejump.mp4','step.mp4','tippy.mp4','wag.mp4'];
-  let counter = localStorage.getItem('slidecounter')||0;
-  let autoincrease = true;
-  let timeout = false;
-  let speed = 3000;
-  function validatecounter() {
-    if (counter < 0) counter = arr.length - 1;
-    counter = counter % arr.length;
-    localStorage.setItem('slidecounter',counter);
-    show();
+  let slideshow = {
+    container: '#slideshow-container',
+    media: [
+      "ball.jpg", "ball.mp4", "begging-puppy.jpg", 
+      "corgi-boing.gif", "dinowalk.mp4", "dirty.mp4", 
+      "dog-with-many-balls.jpeg", "goldiejump.mp4", 
+      "puppy-snapping.gif", "step.mp4", "tippy.mp4", 
+      "wag.mp4"
+    ],
+    folder: 'imgs/',
+    autoplay: 'yes'
   }
-  function show() {
-    clearTimeout(timeout);
-    out.innerHTML = `
-      ${autoincrease?"▶️":'⏸'} 
-      ${arr[counter]} 
-      ${counter+1}/${arr.length}
-    `;
-    video.src = 'imgs/' + arr[counter];
-      if (autoincrease) {
-        timeout = window.setTimeout(
-          function(){
-            counter++;
-            validatecounter();
-        },speed);
-      }
-  }
-  document.addEventListener('keyup', ev => {
-    ev.preventDefault();
-    if (ev.key === "ArrowRight") {counter++;autoincrease = false}
-    if (ev.key === "ArrowLeft") {counter--;autoincrease = false}
-    if (ev.key === " ") {autoincrease = !autoincrease}
-    validatecounter();
-  });
-  validatecounter();
 </script>
-
-
+<script src="slideshow.js"></script>
 </body>
 </html>
