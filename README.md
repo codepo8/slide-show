@@ -4,7 +4,7 @@
 
 This is a scratch-your-own-itch project as I wanted a way to see images and videos full screen in my browser that loop. 
 
-Preview and Quicklook on MacOS are awesome but their treatment of GIFs and the inability for Quicklook to loop videos annoyed me, so I wrote this. 
+Preview and Quicklook on MacOS are awesome but their treatment of GIFs and the inability for Quicklook to loop videos annoyed me, so I wrote this. You can see it in action [in this YouTube Video](https://www.youtube.com/watch?v=VjsKGolzTFo)
 
 ![Slide show showing a picture of a dog with a lot of tennis balls](https://christianheilmann.com/wp-content/uploads/2021/02/slideshow..jpg)
 
