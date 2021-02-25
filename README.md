@@ -42,6 +42,12 @@ You can use the slideshow by giving it a container to create all the elements in
 
 ## Automating the media collection 
 
-Currently I am using this on my hard drive running an local server and the `index.php` script.
+Currently I am using this on my hard drive running a local server and the `index.php` script. If you are using a Mac, PHP comes with the system. Go to the terminal, navigate to the folder where the slide show is and run: 
 
-This one lists all the current folders in the directory the script is in and gives you list of all of them. Clicking the link of the name starts the slide show with the current folder. Feel free to check the script, but there isn't much magic there.
+```
+$ php -S localhost:8000
+
+```
+Then you can navigate in you browser to `localhost:8000` and the rest happens automatically. 
+
+The `index.php` script lists all the current folders in the directory the script is in and gives you list of all of them. Clicking the link of the name starts the slide show with the current folder. Feel free to check the script, but there isn't much magic there.
