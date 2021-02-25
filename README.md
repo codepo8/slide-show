@@ -6,6 +6,8 @@ This is a scratch-your-own-itch project as I wanted a way to see images and vide
 
 Preview and Quicklook on MacOS are awesome but their treatment of GIFs and the inability for Quicklook to loop videos annoyed me, so I wrote this. 
 
+![Slide show showing a picture of a dog with a lot of tennis balls](https://christianheilmann.com/wp-content/uploads/2021/02/slideshow..jpg)
+
 ## Features
 
 * Displays any video or image in a folder in the largest possible size without cropping
