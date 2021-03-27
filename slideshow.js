@@ -78,6 +78,7 @@ function show() {
       },{passive:true});
     }
   } else {
+    wrapper.innerHTML = ' ';
     let url = slideshow.folder + slideshow.media[counter];
     let i = new Image();
     i.src = url;
