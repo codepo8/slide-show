@@ -25,6 +25,7 @@ You can use the slideshow by giving it a container to create all the elements in
 * `folder`: the folder containing these - this should be a child folder of one the slide show is in.
 * `autoplay`: `yes` or `no` indicating if the slide show should start or not
 * `speed`: time in milliseconds to advance to the next media item (f.e. 1000 for a second) 
+* `endless`: `yes` or `no` indicating if hitting `next` on the last element should go to the first and `back` on the first element to the last one. 
 
 ```html
 <div id="slideshow-container"></div>
