@@ -29,7 +29,7 @@ let speed = slideshow.speed || 3000;
 let all = slideshow.media.length
 
 function validatecounter() {
-  autoplay.innerHTML = autoincrease ? "▶️" : '⏸';
+  autoplay.innerText = autoincrease ? "▶️" : '⏸';
   if (restart) {
     if (counter < 0) counter = all - 1;
     counter = counter % all;
@@ -61,8 +61,8 @@ function validatecounter() {
 }
 function show() {
   clearTimeout(timeout);
-  out.innerHTML = `${slideshow.media[counter]} ${counter+1}/${all}`;
-  wrapper.innerHTML = '';
+  out.innerText = `${slideshow.media[counter]} ${counter+1}/${all}`;
+  wrapper.innerText = '';
   wrapper.dataset.loaded = 'false';
 
   if(slideshow.media[counter].endsWith('.mp4')) {
@@ -75,15 +75,19 @@ function show() {
       vid.addEventListener('canplaythrough', ev => {
         wrapper.appendChild(vid);
         loaded();
-      },{passive:true});
+      },{passive:true, once:true});
     }
   } else {
-    wrapper.innerHTML = ' ';
+    wrapper.innerText = ' ';
     let url = slideshow.folder + slideshow.media[counter];
     let i = new Image();
     i.src = url;
     i.onload = function() {
       wrapper.style.backgroundImage = `url(${url})`;
+      loaded();
+    }
+    i.onerror = function() {
+      wrapper.innerText = 'Error loading image ' + url;
       loaded();
     }
   }
@@ -128,5 +132,5 @@ document.addEventListener('keyup', ev => {
 validatecounter();
 } else {
   console.error('Please define a slideshow object first');
-  document.body.innerHTML = "⚠️ Can't find slideshow object"
+  document.body.innerText = "⚠️ Can't find slideshow object"
 }
